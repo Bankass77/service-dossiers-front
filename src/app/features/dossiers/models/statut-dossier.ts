@@ -1,0 +1,6 @@
+export enum StatutDossier {
+    ENREGISTREE= 'ENREGISTREE',
+    INSTRUCTION= 'INSTRUCTION',
+    JUGEE= 'JUGEE',
+    CLOTUREE= 'CLOTUREE'
+}

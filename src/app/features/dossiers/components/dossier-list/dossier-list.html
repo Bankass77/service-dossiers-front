@@ -1,0 +1,10 @@
+<h2>Liste des dossiers</h2>
+
+@for (dossier of dossiers; track dossier.id) {
+<article>
+    <h3>{{dossier.numero}}</h3>
+    <p>{{dossier.titre}}</p>
+    <p>{{dossier.statut}}</p>
+    <p>Crée le: {{dossier.dateCreation}}</p>
+</article>
+}
