@@ -1,10 +1,29 @@
 <h2>Liste des dossiers</h2>
 
-@for (dossier of dossiers; track dossier.id) {
-<article>
-    <h3>{{dossier.numero}}</h3>
-    <p>{{dossier.titre}}</p>
-    <p>{{dossier.statut}}</p>
-    <p>Crée le: {{dossier.dateCreation}}</p>
-</article>
-}
+<p-table [value]="dossiers()" [loading]="loading()" [tableStyle]="{'min-width' : '60rem'}">
+
+    <ng-template #header>
+        <tr>
+            <th>Numéro</th>
+            <th>Titre</th>
+            <th>Statut</th>
+            <th>Date de création</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-dossier>
+        <tr>
+            <td>{{dossier.numero}}</td>
+            <td>{{dossier.titre}}</td>
+            <td>{{dossier.statut}}</td>
+            <td>{{dossier.dateCreation}}</td>
+        </tr>
+
+    </ng-template>
+    <ng-template #emptymessage>
+        <tr>
+            <td colspan="4"> Aucun dossier trouvé.</td>
+        </tr>
+    </ng-template>
+
+
+</p-table>
