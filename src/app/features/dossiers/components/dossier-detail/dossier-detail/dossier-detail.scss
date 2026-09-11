@@ -1,0 +1,62 @@
+.dossier-detail {
+max-width: 1000px;
+margin: 2rem auto;
+padding: 0 1rem;
+}
+
+/* ========================= */
+/* En-tête                   */
+/* ========================= */
+
+.dossier-detail__header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+/* ========================= */
+/* Contenu du dossier        */
+/* ========================= */
+
+.dossier-detail__content {
+display: flex;
+flex-direction: column;
+gap: 1.25rem;
+}
+
+.dossier-detail__field {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.dossier-detail__label {
+font-weight: 600;
+}
+
+/* ========================= */
+/* Formulaire d'édition      */
+/* ========================= */
+
+.dossier-detail__form {
+display: flex;
+flex-direction: column;
+gap: 1.25rem;
+}
+
+.dossier-detail__form input,
+.dossier-detail__form p-select {
+width: 100%;
+}
+
+/* ========================= */
+/* Actions                   */
+/* ========================= */
+
+.dossier-detail__actions {
+display: flex;
+justify-content: flex-end;
+gap: 0.75rem;
+margin-top: 1rem;
+}

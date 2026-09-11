@@ -1,8 +1,8 @@
 import { Injectable,inject } from '@angular/core';
-import { DossierList } from '../components/dossier-list/dossier-list';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DossierModel } from '../models/dossier.model';
+import { DossierUpdateModel } from '../models/dossier-update-model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,19 @@ export class DossierService {
   
   getDossiers(): Observable<DossierModel[]>{
     return this.http.get<DossierModel[]>(this.apiUrl);
+  }
+
+
+  // on recupère un dossier par son id
+  getDossierById(id: string):Observable<DossierModel>{
+
+    return this.http.get<DossierModel>(`${this.apiUrl}/${id}`)
+  }
+
+
+  //on met à jour un dossier
+  updateDossierById(id: string, dossier: DossierUpdateModel): Observable<DossierModel>{
+
+    return this.http.put<DossierModel>(`${this.apiUrl}/${id}`, dossier);
   }
 }

@@ -1,11 +1,13 @@
 import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
 import { DossierService } from '../../services/dossier-service';
 import { DossierModel } from '../../models/dossier.model';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dossier-list',
-  imports: [TableModule],
+  imports: [TableModule, ButtonModule, RouterLink],
   templateUrl: './dossier-list.html',
   styleUrl: './dossier-list.scss',
 })

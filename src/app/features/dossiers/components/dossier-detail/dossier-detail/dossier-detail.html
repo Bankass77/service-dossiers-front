@@ -1,0 +1,209 @@
+<div class="dossier-detail">
+
+  <!-- ========================= -->
+  <!-- EN-TÊTE                   -->
+  <!-- ========================= -->
+
+  <div class="dossier-detail__header">
+
+    <p-button
+      label="Retour à la liste"
+      icon="pi pi-arrow-left"
+      [routerLink]="['/dossiers']"
+      severity="secondary"
+      text
+    />
+
+    @if (dossier() && !editing()) {
+
+      <p-button
+        label="Modifier"
+        icon="pi pi-pencil"
+        (onClick)="startEditing()"
+      />
+
+    }
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- CHARGEMENT                -->
+  <!-- ========================= -->
+
+  @if (loading()) {
+
+    <p-card>
+      <p>Chargement du dossier...</p>
+    </p-card>
+
+
+  } @else if (dossier(); as dossier) {
+
+    <!-- ========================= -->
+    <!-- DOSSIER                   -->
+    <!-- ========================= -->
+
+    <p-card>
+
+      <ng-template #title>
+        {{ dossier.numero }}
+      </ng-template>
+
+      <ng-template #subtitle>
+        Détail du dossier
+      </ng-template>
+
+
+      @if (!editing()) {
+
+        <!-- ========================= -->
+        <!-- MODE LECTURE              -->
+        <!-- ========================= -->
+
+        <div class="dossier-detail__content">
+
+          <div class="dossier-detail__field">
+            <span class="dossier-detail__label">
+              Numéro
+            </span>
+
+            <span>
+              {{ dossier.numero }}
+            </span>
+          </div>
+
+
+          <div class="dossier-detail__field">
+            <span class="dossier-detail__label">
+              Titre
+            </span>
+
+            <span>
+              {{ dossier.titre }}
+            </span>
+          </div>
+
+
+          <div class="dossier-detail__field">
+            <span class="dossier-detail__label">
+              Statut
+            </span>
+
+            <p-tag
+              [value]="dossier.statut"
+            />
+          </div>
+
+
+          <div class="dossier-detail__field">
+            <span class="dossier-detail__label">
+              Date de création
+            </span>
+
+            <span>
+              {{ dossier.dateCreation }}
+            </span>
+          </div>
+
+        </div>
+
+
+      } @else {
+
+        <!-- ========================= -->
+        <!-- MODE ÉDITION              -->
+        <!-- ========================= -->
+
+        <div class="dossier-detail__form">
+
+          <!-- Numéro : lecture seule -->
+          <div class="dossier-detail__field">
+
+            <label for="numero">
+              Numéro
+            </label>
+
+            <input
+              id="numero"
+              pInputText
+              [value]="dossier.numero"
+              disabled
+            />
+
+          </div>
+
+
+          <!-- Titre -->
+          <div class="dossier-detail__field">
+
+            <label for="titre">
+              Titre
+            </label>
+
+            <input
+              id="titre"
+              pInputText
+              [(ngModel)]="editForm.titre"
+            />
+
+          </div>
+
+
+          <!-- Statut -->
+          <div class="dossier-detail__field">
+
+            <label for="statut">
+              Statut
+            </label>
+
+            <p-select
+              id="statut"
+              [options]="status"
+              [(ngModel)]="editForm.statut"
+              placeholder="Sélectionner un statut"
+            />
+
+          </div>
+
+
+          <!-- Actions -->
+          <div class="dossier-detail__actions">
+
+            <p-button
+              label="Annuler"
+              icon="pi pi-times"
+              severity="secondary"
+              [disabled]="saving()"
+              (onClick)="cancelEditing()"
+            />
+
+            <p-button
+              label="Enregistrer"
+              icon="pi pi-check"
+              [loading]="saving()"
+              (onClick)="save()"
+            />
+
+          </div>
+
+        </div>
+
+      }
+
+    </p-card>
+
+
+  } @else {
+
+    <!-- ========================= -->
+    <!-- DOSSIER INTROUVABLE       -->
+    <!-- ========================= -->
+
+    <p-card>
+      <p>Dossier introuvable.</p>
+    </p-card>
+
+  }
+
+</div>

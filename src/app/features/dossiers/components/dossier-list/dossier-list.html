@@ -8,6 +8,8 @@
             <th>Titre</th>
             <th>Statut</th>
             <th>Date de création</th>
+            <th>Date de Modification</th>
+            <th>Date de clôture</th>
         </tr>
     </ng-template>
     <ng-template #body let-dossier>
@@ -16,7 +18,18 @@
             <td>{{dossier.titre}}</td>
             <td>{{dossier.statut}}</td>
             <td>{{dossier.dateCreation}}</td>
+            <td>{{dossier.dateModification}}</td>
+            <td>{{dossier.dateCloture}}</td>
+               <!--On ajoute le bouton voir-->
+               <td>
+                 <p-button
+                 label="voir"
+                 icon="pi pi-eye"
+                 [routerLink]="['/dossiers', dossier.id]"></p-button>
+               </td>
         </tr>
+ 
+      
 
     </ng-template>
     <ng-template #emptymessage>
